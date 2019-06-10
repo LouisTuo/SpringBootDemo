@@ -4,7 +4,8 @@ server:
     context-path: /boot
 
 logging:
-  file: /logs/springboot.log
+  file: ./logs/springboot.log
+  level.org.springframework.web: warn
 
 spring:
   thymeleaf:
@@ -12,4 +13,21 @@ spring:
     mode: HTML # 用非严格的 HTML
     encoding: UTF-8
     servlet:
-      content-type: text/html
+     content-type: text/html
+
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/ttmall?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      # MySQL 8.x: com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis:
+  type-aliases-package: com.crazy.springboot_demo.entity
+  mapper-locations: classpath:mapper/*.xml
