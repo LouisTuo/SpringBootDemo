@@ -7,11 +7,14 @@ logging:
   file: ./logs/springboot.log
   level.org.springframework.web: warn
 
+  #thymeleaf
 spring:
   thymeleaf:
     cache: false # 开发时关闭缓存,不然没法看到实时页面
     mode: HTML # 用非严格的 HTML
     encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
     servlet:
      content-type: text/html
 
@@ -27,7 +30,7 @@ spring:
       # MySQL 8.x: com.mysql.cj.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
 
-
 mybatis:
   type-aliases-package: com.crazy.springboot_demo.entity
   mapper-locations: classpath:mapper/*.xml
+
